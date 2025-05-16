@@ -10,6 +10,7 @@
 #include <time.h>
 #include <toolbox/stream/file_stream.h>
 #include <toolbox/name_generator.h>
+#include "utils.h"
 
 #define TAG             "flame_rng"
 #define HISTORY_SIZE    5
@@ -234,5 +235,6 @@ int32_t flame_rng(void* p) {
     furi_record_close(RECORD_GUI);
 
     FURI_LOG_I(TAG, "Stopping Flame RNG");
+    init_card();
     return 0;
 }
