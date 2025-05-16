@@ -209,6 +209,7 @@ int32_t flame_rng(void* p) {
                 if(event.key == InputKeyBack) {
                     running = false;
                 } else if(event.key == InputKeyOk) {
+                    init_card();
                     furi_mutex_acquire(state->mutex, FuriWaitForever);
                     bool saved = save_random_numbers(state);
                     furi_mutex_release(state->mutex);
@@ -235,6 +236,5 @@ int32_t flame_rng(void* p) {
     furi_record_close(RECORD_GUI);
 
     FURI_LOG_I(TAG, "Stopping Flame RNG");
-    init_card();
     return 0;
 }
